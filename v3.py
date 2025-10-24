@@ -50,11 +50,12 @@ def is_admin(user_id):
 @bot.event
 async def on_ready():
     print(f"✅ Logged in as {bot.user}")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="By PowerDev | /help"))
     try:
         synced = await bot.tree.sync()
-        print(f"✅ Synced {len(synced)} commands globally.")
+        print(f"🔗 Synced {len(synced)} commands.")
     except Exception as e:
-        print(f"⚠️ Sync error: {e}")
+        print(f"❌ Sync error: {e}")
 
 # ---------------- CREATE VPS ----------------
 @bot.tree.command(name="createvps", description="Create a VPS for a user (Admin only)")
